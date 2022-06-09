@@ -13,6 +13,7 @@ StylesManager.applyTheme("modern");
 // JSON CONFIG - edit in order to change the questions. Refer to the Documentation for methods, parameters etc.
 const surveyJson = {
   pages: [
+    // Starting Page
     {
       elements: [
         {
@@ -83,6 +84,7 @@ const surveyJson = {
     },
   ],
 
+  // Params for the Questionnaire
   showQuestionNumbers: "on",
   pageNextText: "Next",
   completeText: "Submit",
