@@ -18,7 +18,7 @@ const surveyJson = {
       elements: [
         {
           type: "html",
-          html: "<h2>In this survey, we will ask you a couple questions about your impressions of our product.</h2>",
+          html: "<h2>In this survey, we will ask you a couple questions about your impressions of JavaScript.</h2>",
         },
       ],
     },
@@ -27,14 +27,17 @@ const surveyJson = {
       elements: [
         {
           name: "satisfaction-score",
-          title: "How would you describe your experience with our product?",
+          title: "How would you describe your experience with JavaScript?",
           type: "radiogroup",
           choices: [
-            { value: 5, text: "Fully satisfying" },
-            { value: 4, text: "Generally satisfying" },
-            { value: 3, text: "Neutral" },
-            { value: 2, text: "Rather unsatisfying" },
-            { value: 1, text: "Not satisfying at all" },
+            { value: 5, text: "Awesome!" },
+            { value: 4, text: "I like it" },
+            { value: 3, text: "It's okay" },
+            { value: 2, text: "I don't like it" },
+            {
+              value: 1,
+              text: "It's the worst programming language to ever be conceived",
+            },
           ],
           isRequired: true,
         },
@@ -45,14 +48,15 @@ const surveyJson = {
       elements: [
         {
           name: "what-would-make-you-more-satisfied",
-          title: "What can we do to make your experience more satisfying?",
+          title:
+            "Which feature would like to be added to the language in the future?",
           type: "comment",
           visibleIf: "{satisfaction-score} = 4",
         },
         {
           name: "nps-score",
           title:
-            "On a scale of zero to ten, how likely are you to recommend our product to a friend or colleague?",
+            "On a scale of zero to ten, how likely are you to recommend programming in JavaScript?",
           type: "rating",
           rateMin: 0,
           rateMax: 10,
@@ -65,7 +69,7 @@ const surveyJson = {
       elements: [
         {
           name: "how-can-we-improve",
-          title: "In your opinion, how could we improve our product?",
+          title: "In your opinion, how should JavaScript be improved?",
           type: "comment",
         },
       ],
@@ -76,7 +80,7 @@ const surveyJson = {
         {
           name: "disappointing-experience",
           title:
-            "Please let us know why you had such a disappointing experience with our product",
+            "Please let us know why you didn't like JavaScript and how it should be improved?",
           type: "comment",
         },
       ],
@@ -102,7 +106,6 @@ export default {
   },
   data() {
     const survey = new Model(surveyJson);
-    survey.onComplete.add(this.displayResults);
     return {
       survey,
       surveyResults: "",
@@ -116,23 +119,4 @@ export default {
     },
   },
 };
-
-// BACKEND INTEGRATION
-// saveSurveyResults(
-//   "https://your-web-service.com/" + SURVEY_ID,
-//   sender.data
-// )
-
-// function saveSurveyResults(url, json) {
-//   const request = new XMLHttpRequest();
-//   request.open('POST', url);
-//   request.setRequestHeader('Content-Type', 'application/json;charset=UTF-8');
-//   request.addEventListener('load', () => {
-//     // Handle "load"
-//   });
-//   request.addEventListener('error', () => {
-//     // Handle "error"
-//   });
-//   request.send(JSON.stringify(json));
-// }
 </script>
